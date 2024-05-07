@@ -17,7 +17,7 @@ namespace API
                         System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json")
                     );
 
-                var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+                var json = JsonConvert.SerializeObject(data);
                 var request = new HttpRequestMessage(HttpMethod.Post, url);
                 request.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -43,55 +43,60 @@ namespace API
             }
         }
 
-        public static T Read_ById(string url, int id)
+        public static (T, bool) Read_ById(string url, int id)
         {
             using (HttpClient client = new HttpClient())
             {
-                url = url + "/" + id;
-                var response = client.GetStringAsync(url);
-                response.Wait();
-
-                var json = response.Result;
-                var result = JsonConvert.DeserializeObject<T>(json);
-                return result;
+                try
+                {
+                    var response = client.GetStringAsync(url + "/" + id).Result;
+                    var result = JsonConvert.DeserializeObject<T>(response);
+                    return (result, true);
+                }
+                catch
+                {
+                    return (default(T), false);
+                }
             }
         }
 
-        public static void Update(string url, int id, T data)
+        public static bool Update(string url, int id, T data)
         {
             using (HttpClient client = new HttpClient())
             {
-                url = url + "/" + id;
-                client.BaseAddress = new Uri(url);
-                client.DefaultRequestHeaders.Accept.Add(
-                        System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json")
-                    );
-
-                var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
-                var request = new HttpRequestMessage(HttpMethod.Put, url);
-                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = client.SendAsync(request);
-                response.Wait();
-
-                json = response.Result.Content.ReadAsStringAsync().Result;
-                var result = JsonConvert.DeserializeObject<T>(json);
+                try
+                {
+                    var json = JsonConvert.SerializeObject(data);
+                    var request = new HttpRequestMessage(HttpMethod.Put, url + "/" + id)
+                    {
+                        Content = new StringContent(json, Encoding.UTF8, "application/json")
+                    };
+                    var response = client.SendAsync(request).Result;
+                    return response.IsSuccessStatusCode;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
 
-        public static void Delete(string url, int id)
+        public static bool Delete(string url, int id)
         {
             using (HttpClient client = new HttpClient())
             {
-                url = url + "/" + id;
-                client.BaseAddress = new Uri(url);
-                client.DefaultRequestHeaders.Accept.Add(
-                        System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json")
-                    );
-                var response = client.DeleteAsync(url);
-                response.Wait();
+                try
+                {
+                    var response = client.DeleteAsync(url + "/" + id).Result;
+                    return response.IsSuccessStatusCode;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
+
         public static List<T> LeerCredenciales(string url)
         {
             using (HttpClient client = new HttpClient())
