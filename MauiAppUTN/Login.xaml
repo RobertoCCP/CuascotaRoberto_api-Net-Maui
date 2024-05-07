@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppUTN.Login"
+             Title="Login"
+             BackgroundColor="#f0f0f0">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="15"
+            Padding="10"
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Text="Universidad Técnica del Norte" 
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextColor="#2c3e50"
+                HorizontalOptions="Center" />
+
+            <Label 
+                Text="Realizado por: Roberto Cuascota" 
+                FontSize="Small"
+                HorizontalOptions="Center"
+                TextColor="#34495e" />
+
+            <Frame 
+                CornerRadius="10"
+                Padding="20"
+                Margin="0,0,0,10"
+                HorizontalOptions="Fill"
+                BackgroundColor="White">
+                <VerticalStackLayout Spacing="15">
+                    <Label 
+                        Text="Bienvenido, inicia sesión para empezar!"
+                        FontSize="Small"
+                        HorizontalOptions="Center" />
+
+                    <Label Text="Username:" FontSize="Small" />
+                    <Entry 
+                        x:Name="txtUsername"
+                        Placeholder="Ingresa tu usuario" />
+
+                    <Label Text="Password:" FontSize="Small" />
+                    <Entry 
+                        x:Name="txtPassword"
+                        Placeholder="Ingresa tu contraseña"
+                        IsPassword="True" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button 
+                x:Name="cmdLogin"
+                Text="Login"
+                BackgroundColor="Green"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="cmdLogin_Clicked"
+                CornerRadius="5" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

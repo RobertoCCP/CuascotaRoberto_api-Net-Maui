@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppUTN.Clasificaciones"
+             Title="Clasificaciones"
+             BackgroundColor="#f4f4f4">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FFFFFF" Offset="0" />
+            <GradientStop Color="#FFD269" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+         Text="Menú"
+         Clicked="OnBackButtonClicked"
+         Order="Primary"
+         Priority="0" />
+        <ToolbarItem
+         Text="Productos"
+         Clicked="OnNextPageButtonClicked"
+         Order="Primary"
+         Priority="1" />
+    </ContentPage.ToolbarItems>
+    
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="20"
+            Padding="30"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Text="Bienvenido a la página de Clasificaciones!"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="#34495e"
+                HorizontalOptions="Center" />
+
+            <Frame 
+                CornerRadius="10"
+                Padding="20"
+                Margin="0,0,0,10"
+                HorizontalOptions="Fill"
+                BackgroundColor="White">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Id: Clasificación" FontSize="Small" />
+                    <Entry x:Name="txtId" Placeholder="Introduce el ID de clasificación" />
+
+                    <Label Text="Clasificación" FontSize="Small" />
+                    <Entry x:Name="txtClasificacion" Placeholder="Descripción de la clasificación" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button 
+                x:Name="cmdCreate" 
+                Text="Insertar" 
+                Clicked="cmdCreate_Clicked"
+                BackgroundColor="#2ecc71"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,10,0,0" />
+
+            <Button 
+                x:Name="cmdLeer" 
+                Text="Leer" 
+                Clicked="cmdLeer_Clicked"
+                BackgroundColor="#3498db"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,5,0,0" />
+
+            <Button 
+                x:Name="cmdUpdate" 
+                Text="Actualizar" 
+                Clicked="cmdUpdate_Clicked"
+                BackgroundColor="#f39c12"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,5,0,0" />
+
+            <Button 
+                x:Name="cmdDelete" 
+                Text="Eliminar" 
+                Clicked="cmdDelete_Clicked"
+                BackgroundColor="#e74c3c"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,5,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

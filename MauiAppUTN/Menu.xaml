@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppUTN.Menu"
+             Title="Menu"
+             BackgroundColor="#f4f4f4">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Text="Bienvenido al menú!"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="#2c3e50"
+                HorizontalOptions="Center" />
+
+            <Button 
+                x:Name="cmdNext1" 
+                Text="Clasificaciones" 
+                Clicked="cmdNext1_Clicked"
+                Margin="0,20,0,0"
+                BackgroundColor="#3498db"
+                TextColor="White"
+                CornerRadius="5" />
+
+            <Button 
+                x:Name="cmdNext2" 
+                Text="Productos" 
+                Clicked="cmdNext2_Clicked"
+                Margin="0,5,0,0"
+                BackgroundColor="#3498db"
+                TextColor="White"
+                CornerRadius="5" />
+
+            <Button 
+                x:Name="cmdLogout" 
+                Text="Cerrar Sesión" 
+                Clicked="cmdLogout_Clicked"
+                Margin="0,20,0,0"
+                BackgroundColor="#e74c3c"
+                TextColor="White"
+                CornerRadius="5" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

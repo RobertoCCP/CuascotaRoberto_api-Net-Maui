@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppUTN.Productos"
+             Title="Productos"
+             BackgroundColor="#FFD269">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FFFFFF" Offset="0" />
+            <GradientStop Color="#FFD269" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Menú"
+            Clicked="OnBackButtonClicked"
+            Order="Primary"
+            Priority="0" />
+        <ToolbarItem
+            Text="Clasificaciones"
+            Clicked="OnNextPageButtonClicked"
+            Order="Primary"
+            Priority="1" />
+    </ContentPage.ToolbarItems>
+    
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="20"
+            Padding="30"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Text="Bienvenidos a la página de Productos!"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="#34495e"
+                HorizontalOptions="Center" />
+
+            <Frame 
+                CornerRadius="10"
+                Padding="20"
+                Margin="0,0,0,10"
+                HorizontalOptions="Fill"
+                BackgroundColor="White">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Id: Producto" FontSize="Small" />
+                    <Entry x:Name="txtIdProducto" Placeholder="Escriba el ID del producto" />
+
+                    <Label Text="Nombre Producto" FontSize="Small" />
+                    <Entry x:Name="txtNombreProducto" Placeholder="Nombre del producto" />
+
+                    <Label Text="Existencia" FontSize="Small" />
+                    <Entry x:Name="txtExistencia" Placeholder="Cantidad en existencia" />
+
+                    <Label Text="Precio Unitario" FontSize="Small" />
+                    <Entry x:Name="txtPrecioUnitario" Placeholder="Precio por unidad" />
+
+                    <Label Text="IVA" FontSize="Small" />
+                    <Entry x:Name="txtIVA" Placeholder="Impuesto sobre el valor añadido" />
+
+                    <Label Text="ID Clasificacion" FontSize="Small" />
+                    <Entry x:Name="txtClasificacionID" Placeholder="ID de clasificación" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button 
+                x:Name="cmdCreateProd" 
+                Text="Insertar" 
+                Clicked="cmdCreateProd_Clicked"
+                BackgroundColor="#2ecc71"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,10,0,0" />
+
+            <Button 
+                x:Name="cmdLeerProd" 
+                Text="Leer" 
+                Clicked="cmdLeerProd_Clicked"
+                BackgroundColor="#3498db"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,5,0,0" />
+
+            <Button 
+                x:Name="cmdUpdateProd" 
+                Text="Actualizar" 
+                Clicked="cmdUpdateProd_Clicked"
+                BackgroundColor="#f39c12"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,5,0,0" />
+
+            <Button 
+                x:Name="cmdDeleteProd" 
+                Text="Eliminar" 
+                Clicked="cmdDeleteProd_Clicked"
+                BackgroundColor="#e74c3c"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="0,5,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
