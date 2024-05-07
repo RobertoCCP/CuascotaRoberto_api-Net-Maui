@@ -116,13 +116,11 @@ public partial class Productos : ContentPage
         }
     }
 
-    // Manejador de evento para el botón de regresar
     private async void OnBackButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Menu());
     }
 
-    // Manejador de evento para el botón de ir a otra página
     private async void OnNextPageButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Clasificaciones());
